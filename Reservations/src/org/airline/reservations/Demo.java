@@ -1,4 +1,4 @@
-package org.online.reservations;
+package org.airline.reservations;
 
 public class Demo {
 
