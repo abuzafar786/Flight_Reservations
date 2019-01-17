@@ -27,6 +27,13 @@ public class Flight {
 	public void setDepartureCity(String departureCity) {
 		this.departureCity = departureCity;
 	}
+	
+	public void setCities(String deprtureCitie, String arrivalCitie) {
+		
+		this.departureCity = departureCity;
+		this.arrivalCity = arrivalCity;	
+		
+	}
 
 	public String getArrivalCity() {
 		return arrivalCity;

@@ -19,6 +19,13 @@ public class Passenger {
 		
 	}
 	
+	public Passenger(String name) {
+		
+		setName(name);
+		
+		
+	}
+	
 	//getters and setters
 	public String getName() {
 		return name;		
