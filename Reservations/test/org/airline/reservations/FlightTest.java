@@ -1,13 +1,13 @@
 package org.airline.reservations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class FlightTest {
+public class FlightTest {
 
 	@Test
-	void test() {
+	public void test() {
 		Flight testFlight1 = new Flight();
 		assertEquals("Unknown Departure City", testFlight1.getDepartureCity());
 		assertEquals("Unknown Arrival City", testFlight1.getArrivalCity());
