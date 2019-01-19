@@ -11,6 +11,13 @@ public class Seat {
 			setSeatNumber(10);		
 			
 		}
+		
+		public Seat(int seatNumber) {
+			
+			this.seatNumber = seatNumber;
+			
+		}
+		
 
 		public int getSeatNumber() {
 			return seatNumber;
@@ -20,6 +27,7 @@ public class Seat {
 			this.seatNumber = seatNumber;
 		}
 		
-		
-
+		public String toString() {
+			return "Seat: " + this.getSeatNumber();			
+		}
 }

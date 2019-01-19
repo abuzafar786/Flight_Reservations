@@ -17,7 +17,9 @@ public class Ticket {
 	public Ticket() {		
 		departureDate = LocalDate.now();
 	}
-
+	
+	
+	//getters & setters
 	public LocalDate getDepartureDate() {
 		return departureDate;
 	}
@@ -50,7 +52,20 @@ public class Ticket {
 		this.seat = seat;
 	}
 	
-	//getters & setters
+	public String toString() {
+		return "Ticket: " 
+				+ this.getPassenger().getName() 
+				+ " departing on flight " 
+				+ this.getFlight().getFlightNumber() 
+				+ " from " 
+				+ this.getFlight().getDepartureCity() 
+				+ " to " 
+				+ this.getFlight().getArrivalCity() 
+				+ " on " 
+				+ this.getDepartureDate() 
+				+ " in seat " 
+				+ this.getSeat().getSeatNumber(); 		
+	}
 	
 
 }

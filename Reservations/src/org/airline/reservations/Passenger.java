@@ -13,17 +13,12 @@ public class Passenger {
 	private String name; //Passenger name
 	
 	//constructor
-	public Passenger() {
-		
-		this.name = "Unknown name";		
-		
+	public Passenger() {		
+		this.name = "Unknown name";				
 	}
 	
-	public Passenger(String name) {
-		
+	public Passenger(String name) {		
 		setName(name);
-		
-		
 	}
 	
 	//getters and setters
@@ -35,10 +30,8 @@ public class Passenger {
 		this.name = newName;
 	}
 	
-	public String toString() {
-		
+	public String toString () {
 		return "Passenger: " + this.getName();
-		
 	}
 
 }

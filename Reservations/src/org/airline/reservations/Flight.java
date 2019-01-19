@@ -12,14 +12,20 @@ public class Flight {
 	private int flightNumber;
 	
 	//constructor
-	public Flight () {
-		
+	public Flight() {		
 		this.departureCity = "Unknown Departure City";
 		this.arrivalCity = "Unknown Arrival City";
-		this.flightNumber = 100;
+		this.flightNumber = 100;		
+	}
+	
+	public Flight(int flightNumber, String departureCity, String arrivalCity) {		
+		setFlightNumber(flightNumber);
+		setDepartureCity(departureCity);
+		setArrivalCity(arrivalCity);		
 		
 	}
 
+	//getters and setters
 	public String getDepartureCity() {
 		return departureCity;
 	}
@@ -51,7 +57,9 @@ public class Flight {
 		this.flightNumber = flightNumber;
 	}
 	
-	
-	
+	public String toString() {
+		return "Flight: " + this.getFlightNumber() + " " + this.getDepartureCity() + " - " + this.getArrivalCity(); 
+						
+	} 	
 
 }

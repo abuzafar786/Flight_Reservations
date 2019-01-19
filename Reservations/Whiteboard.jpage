@@ -1,7 +1,5 @@
-Flight flight1 = new Flight();
-
-flight1.setCities("Los angecles", "Chicago");
-
-Passenger p2 = new Passenger("German Jongewaard");
-
+ArrayList<String> names = new ArrayList<String>();
+names.add("German");
+names.add("Jongewaard");
+System.out.println("There are now " + names.size() + " names.");
 
