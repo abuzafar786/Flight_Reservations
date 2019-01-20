@@ -36,7 +36,11 @@ public class Database {
 	}
 
 	public void addSeat(int seatNumber) {
-		seats.add(new Seat(seatNumber));
+		seats.add(new Seat(seatNumber));		
+	}
+
+	public void addFlight(int flightNumber, String departureCity, String arrivalCity) {
+		flights.add(new Flight(flightNumber, departureCity, arrivalCity));
 		
 	}
 	
