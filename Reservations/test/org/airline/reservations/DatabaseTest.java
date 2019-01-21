@@ -28,4 +28,11 @@ public class DatabaseTest {
 		testDB3.addFlight(1000, "Los Angeles", "Chicago");
 		assertEquals(1, testDB3.getFlights().size());
 	}
+	
+	@Test
+	public void testPassegner() {
+		Database testDB4 = new Database();
+		testDB4.addPassenger("German Jongewaard");
+		assertEquals(1.,testDB4.getPassengers().size());
+	}
 }

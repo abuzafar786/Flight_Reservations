@@ -43,6 +43,11 @@ public class Database {
 		flights.add(new Flight(flightNumber, departureCity, arrivalCity));
 		
 	}
+
+	public void addPassenger(String passengerName) {
+		passengers.add(new Passenger(passengerName));
+		
+	}
 	
 
 }
