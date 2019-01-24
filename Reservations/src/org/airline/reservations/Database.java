@@ -71,14 +71,14 @@ public class Database {
 				ticketPassenger = item;
 			}
 		}
-		
+		//find flight object
 		Flight ticketFlight = null;
 		for(Flight item : getFlights()) {
 			if(flightNumber == item.getFlightNumber()) {
 				ticketFlight = item;
 			}
 		}
-		
+		//find seat object
 		Seat ticketSeat = null;
 		for(Seat item : getSeats()) {
 			if(seatNumber == item.getSeatNumber()) {
@@ -86,8 +86,26 @@ public class Database {
 			}
 		}
 		
-		return passengerName;		
+		Ticket temTicket = new Ticket();
+		temTicket.setDepartureDate(departureDate);
+		temTicket.setPassenger(ticketPassenger);
+		temTicket.setFlight(ticketFlight);
+		temTicket.setSeat(ticketSeat);
+		tickets.add(temTicket);
+		return temTicket.toString();		
 	}
+	
+	public ArrayList<Seat> getOpenSeats(LocalDate departureDate, int flightNumber){
+		ArrayList<Seat> openSeats = getSeats(); 
+		for(Ticket item : getTickets()) {
+			if(departureDate.equals(item.getDepartureDate()) && flightNumber == item.getFlight().getFlightNumber()) {
+				openSeats.remove(item.getSeat());
+			}
+		}
+		return openSeats;
+	}
+	
+	
 	
 	public void bootstrap() {
 		addSeat(1);
