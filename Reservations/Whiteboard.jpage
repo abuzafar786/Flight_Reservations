@@ -1,5 +1,9 @@
-ArrayList<String> names = new ArrayList<String>();
-names.add("German");
-names.add("Jongewaard");
-System.out.println("There are now " + names.size() + " names.");
+int highScore = 1000;
+int finalScore = 11000;
 
+if(finalScore > highScore){	
+	System.out.println("You set the new high score!");	
+} else {
+	System.out.println("Would you like to play again?");	
+}
+ 

@@ -1,4 +1,4 @@
-package org.airline.reservations;
+ package org.airline.reservations;
 
 import static org.junit.Assert.*;
 
@@ -29,10 +29,31 @@ public class DatabaseTest {
 		assertEquals(1, testDB3.getFlights().size());
 	}
 	
-	@Test
+ 	@Test
 	public void testPassegner() {
 		Database testDB4 = new Database();
 		testDB4.addPassenger("German Jongewaard");
-		assertEquals(1.,testDB4.getPassengers().size());
+		assertEquals(1,testDB4.getPassengers().size());
 	}
+ 	
+ 	@Test
+ 	public void testAddNewPassenger() {
+ 		Database testDB6 = new Database();
+		boolean result1 = testDB6.addPassenger("German Jongewaard");
+		assertEquals(false, result1);
+		
+		boolean result2 = testDB6.addPassenger("German Jongewaard");
+		assertEquals(true, result2);
+		
+ 		 
+ 	}
+ 	
+ 	@Test
+ 	public void testBootstrap() {
+ 		Database testDB7 = new Database();
+ 		testDB7.bootstrap();
+ 		assertEquals(6, testDB7.getSeats().size());
+ 		assertEquals(4, testDB7.getFlights().size());
+ 		
+ 	}
 }

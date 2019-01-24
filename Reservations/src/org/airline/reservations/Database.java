@@ -1,5 +1,6 @@
 package org.airline.reservations;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Database {
@@ -34,20 +35,75 @@ public class Database {
 	public ArrayList<Ticket> getTickets() {
 		return tickets;
 	}
-
+	
+	
+	//setters
 	public void addSeat(int seatNumber) {
 		seats.add(new Seat(seatNumber));		
 	}
 
 	public void addFlight(int flightNumber, String departureCity, String arrivalCity) {
-		flights.add(new Flight(flightNumber, departureCity, arrivalCity));
-		
+		flights.add(new Flight(flightNumber, departureCity, arrivalCity));		
 	}
 
-	public void addPassenger(String passengerName) {
-		passengers.add(new Passenger(passengerName));
+	public boolean addPassenger(String passengerName) {
+		boolean passengerExists = false;
+		
+		for(Passenger item : getPassengers()) {
+			if(passengerName.equals(item.getName())) {
+				passengerExists = true;
+			}
+		}
+		
+		if(passengerExists == false) {
+			passengers.add(new Passenger(passengerName));				
+		}
+		
+		 
+		return passengerExists;
+	}
+	
+	public String addTicket(LocalDate departureDate, String passengerName, int flightNumber, int seatNumber) {
+		//find the passenger object
+		Passenger ticketPassenger = null;
+		for(Passenger item : getPassengers()) {
+			if(passengerName.equals(item.getName())) {
+				ticketPassenger = item;
+			}
+		}
+		
+		Flight ticketFlight = null;
+		for(Flight item : getFlights()) {
+			if(flightNumber == item.getFlightNumber()) {
+				ticketFlight = item;
+			}
+		}
+		
+		Seat ticketSeat = null;
+		for(Seat item : getSeats()) {
+			if(seatNumber == item.getSeatNumber()) {
+				ticketSeat = item;
+			}
+		}
+		
+		return passengerName;		
+	}
+	
+	public void bootstrap() {
+		addSeat(1);
+		addSeat(2);
+		addSeat(3);
+		addSeat(4);
+		addSeat(5);
+		addSeat(6);
+		
+		addFlight(1000, "Los Angeles", "Chicago");
+		addFlight(1010, "Chicago", "New York");
+		addFlight(2000, "New York", "Chicago");
+		addFlight(2010, "Chicago", "Los Angeles");
 		
 	}
+	
 	
 
 }
