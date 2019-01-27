@@ -59,17 +59,26 @@ public class Console {
 			System.out.println("\nAssuming you are flying today,");
 			System.out.println("Here are the available seats on that flight: ");
 			ArrayList<Seat> openSeats = prodDB.getOpenSeats(departureDate, flightNumber);
-			for(Seat item : openSeats) {	
-				tamanioSeats = openSeats.size();
-				 
-				if(item.getSeatNumber() != tamanioSeats ) {
-					System.out.println(item.getSeatNumber() + ", ");
-				} else {
-					System.out.println(item.getSeatNumber() + ".");
+			tamanioSeats = openSeats.size();
+			if(!openSeats.isEmpty()){				
+			
+				for(Seat item : openSeats) {	
+					 
+					 
+					if(item.getSeatNumber() < tamanioSeats ) {
+						System.out.println(item.getSeatNumber() + ", ");
+					} else {
+						System.out.println(item.getSeatNumber() + ".");
+					}
+					 
 				}
-				 
+				
+				System.out.println("\nEnter the seat you want: ");
+				
+			}else {
+				System.out.println("\nAll the Seats are complete, Thanks.");				
 			}
-			System.out.println("\nEnter the seat you want: ");
+			 
 			try {
 				seatNumber = Integer.parseInt(screenInput.readLine());
 			} catch(IOException e) {
