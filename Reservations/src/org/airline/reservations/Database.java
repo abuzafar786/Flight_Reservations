@@ -1,7 +1,16 @@
 package org.airline.reservations;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database {
 
@@ -10,6 +19,9 @@ public class Database {
 	private ArrayList<Flight> flights;
 	private ArrayList<Passenger> passengers;
 	private ArrayList<Ticket> tickets;
+	
+	private static Logger databaseLog = Logger.getLogger(Database.class.getName());
+	private static ConsoleHandler logScreen = new ConsoleHandler();
 
 	//constructor
 	public Database() {
@@ -38,6 +50,13 @@ public class Database {
 	
 	
 	//setters
+	public void setLogging() {
+		databaseLog.addHandler(logScreen);
+		databaseLog.setLevel(Level.FINE);
+		logScreen.setLevel(Level.FINE);
+	}
+	
+	
 	public void addSeat(int seatNumber) {
 		seats.add(new Seat(seatNumber));		
 	}
@@ -103,9 +122,7 @@ public class Database {
 			}
 		}
 		return openSeats;
-	}
-	
-	
+	}	
 	
 	public void bootstrap() {
 		addSeat(1);
@@ -120,6 +137,39 @@ public class Database {
 		addFlight(2000, "New York", "Chicago");
 		addFlight(2010, "Chicago", "Los Angeles");
 		
+	}
+	
+	public void bootstrapCSV() {
+		try {
+			BufferedReader flightImport = new BufferedReader(new FileReader("/home/german/git/flightreservations/Reservations/import/flights.csv"));
+			String flightLine;
+			while((flightLine = flightImport.readLine()) != null) {
+				System.out.println(flightLine);
+			}
+			flightImport.close(); 	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void exportSeats() {
+		try {
+			BufferedWriter seatExport = new BufferedWriter(new FileWriter("/home/german/git/flightreservations/Reservations/export/seats.csv"));
+			for(Seat item : getSeats()) {
+				seatExport.write(item.toString() + "\n");
+			}			 
+			seatExport.close();
+			System.out.println("Export file created");			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	

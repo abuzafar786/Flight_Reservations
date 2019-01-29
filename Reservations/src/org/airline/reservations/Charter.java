@@ -25,6 +25,12 @@ public class Charter extends Flight{
 	}
 	
 	
-	
+	public String toString() {
+		return "Flight: " + this.getFlightNumber() + " " + this.getDepartureCity() 
+			 + " - " + this.getArrivalCity()
+			 + ", departing " + this.getDepartureDateTime().toLocalDate()
+			 + " at " + this.getDepartureDateTime().toLocalTime(); 
+						
+	} 
 
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Console {
 
@@ -53,7 +54,8 @@ public class Console {
 			} catch (IOException e) {
 				System.out.println("Please enter a flight number.");
 			}catch (NumberFormatException e) {
-				System.out.println("That wasn't a number.");
+				//System.out.println("That wasn't a number.");
+				Logger.getGlobal().warning("Flight must be an integer");
 			}
 			// show available seats and ask
 			System.out.println("\nAssuming you are flying today,");
